@@ -56,7 +56,7 @@ public class DomUtils {
                     }
                 }
             }
-            if (!found) Bukkit.getLogger().log(Level.WARNING, "File '" + including.getName() + "' was not found nor included!");
+            if (!found) Bukkit.getLogger().log(Level.WARNING, "El archivo '" + including.getName() + "' no se ha encontrado ni incluido!");
         }
         return original;
     }
