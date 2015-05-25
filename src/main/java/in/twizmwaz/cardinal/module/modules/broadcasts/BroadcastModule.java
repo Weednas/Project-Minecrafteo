@@ -44,7 +44,7 @@ public class BroadcastModule implements TaskedModule {
                     if (type.equals(BroadcastType.TIP))
                         ChatUtils.getGlobalChannel().sendLocalizedMessage(new UnlocalizedChatMessage(ChatColor.GRAY + "" + ChatColor.BOLD + "[" + ChatColor.BLUE + "" + ChatColor.BOLD + "Tip" + ChatColor.GRAY + "" + ChatColor.BOLD + "] " + ChatColor.AQUA + "" + ChatColor.ITALIC + message));
                     else if (type.equals(BroadcastType.ALERT))
-                        ChatUtils.getGlobalChannel().sendLocalizedMessage(new UnlocalizedChatMessage(ChatColor.GRAY + "" + ChatColor.BOLD + "[" + ChatColor.YELLOW + "" + ChatColor.BOLD + "Alert" + ChatColor.GRAY + "" + ChatColor.BOLD + "] " + ChatColor.GREEN + "" + ChatColor.ITALIC + message));
+                        ChatUtils.getGlobalChannel().sendLocalizedMessage(new UnlocalizedChatMessage(ChatColor.GRAY + "" + ChatColor.BOLD + "[" + ChatColor.YELLOW + "" + ChatColor.BOLD + "Alerta" + ChatColor.GRAY + "" + ChatColor.BOLD + "] " + ChatColor.GREEN + "" + ChatColor.ITALIC + message));
                     timesBroadcasted++;
                 }
             }
