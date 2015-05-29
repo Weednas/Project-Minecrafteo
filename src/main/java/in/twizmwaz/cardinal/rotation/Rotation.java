@@ -38,7 +38,7 @@ public class Rotation {
     private File repo;
 
     public Rotation() throws RotationLoadException {
-        this.rotationFile = new File(Cardinal.getInstance().getConfig().getString("rotacion"));
+        this.rotationFile = new File(Cardinal.getInstance().getConfig().getString("rotation"));
         try {
             refreshRepo();
         } catch (IOException e) {
