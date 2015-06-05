@@ -37,24 +37,24 @@ public class DeathMessages implements Module {
                         if (event.getKiller().equals(event.getPlayer())) {
                             deathMessage = name + ChatColor.GRAY + " 'sploded";
                         } else {
-                            deathMessage = name + ChatColor.GRAY + " was blown up by " + TeamUtils.getTeamColorByPlayer(event.getKiller()) + event.getKiller().getName() + ChatColor.GRAY + "'s TNT";
+                            deathMessage = name + ChatColor.GRAY + " fue explotado por " + TeamUtils.getTeamColorByPlayer(event.getKiller()) + event.getKiller().getName() + ChatColor.GRAY + "TNT";
                         }
                     } else {
                         deathMessage = name + ChatColor.GRAY + " blew up";
                     }
                 } else if (cause.equals(DamageCause.CONTACT)) {
-                    deathMessage = name + ChatColor.GRAY + " was pricked to death";
+                    deathMessage = name + ChatColor.GRAY + " fue pinchado a la muerte";
                 } else if (cause.equals(DamageCause.DROWNING)) {
-                    deathMessage = name + ChatColor.GRAY + " forgot to breathe";
+                    deathMessage = name + ChatColor.GRAY + " se olvidó de respirar";
                 } else if (cause.equals(DamageCause.ENTITY_ATTACK)) {
                     if (event.getKiller() != null) {
                         if (event.getKiller().getItemInHand().getType().equals(Material.AIR)) {
-                            deathMessage = name + ChatColor.GRAY + " felt the fury of " + TeamUtils.getTeamColorByPlayer(event.getKiller()) + event.getKiller().getName() + ChatColor.GRAY + "'s fists";
+                            deathMessage = name + ChatColor.GRAY + " murió a manos de " + TeamUtils.getTeamColorByPlayer(event.getKiller()) + event.getKiller().getName();
                         } else {
-                            deathMessage = name + ChatColor.GRAY + " was slain by " + TeamUtils.getTeamColorByPlayer(event.getKiller()) + event.getKiller().getName() + ChatColor.GRAY + "'s " + (event.getKiller().getItemInHand().getEnchantments() != null && event.getKiller().getItemInHand().getEnchantments().size() > 0 ? "enchanted " : "") + event.getKiller().getItemInHand().getType().name().replaceAll("_", " ").toLowerCase();
+                            deathMessage = name + ChatColor.GRAY + " fue asesinado por " + TeamUtils.getTeamColorByPlayer(event.getKiller()) + event.getKiller().getName() + ChatColor.GRAY + "'s " + (event.getKiller().getItemInHand().getEnchantments() != null && event.getKiller().getItemInHand().getEnchantments().size() > 0 ? "enchanted " : "") + event.getKiller().getItemInHand().getType().name().replaceAll("_", " ").toLowerCase();
                         }
                     } else {
-                        deathMessage = name + ChatColor.GRAY + " was slain";
+                        deathMessage = name + ChatColor.GRAY + " fue asesinado";
                     }
                 } else if (cause.equals(DamageCause.FALL)) {
                     if (event.getTrackerDamageEvent() != null) {
