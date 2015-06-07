@@ -117,30 +117,30 @@ public class Snowflakes implements Module {
         if (event.getFinalAmount() != 0) {
             String reason;
             if (event.getChangeReason().equals(ChangeReason.PLAYER_KILL)) {
-                reason = "killed " + TeamUtils.getTeamColorByPlayer(Bukkit.getOfflinePlayer(event.get(0))) + event.get(0);
+                reason = "mataste a " + TeamUtils.getTeamColorByPlayer(Bukkit.getOfflinePlayer(event.get(0))) + event.get(0);
             } else if (event.getChangeReason().equals(ChangeReason.WOOL_TOUCH)) {
-                reason = "picked up " + event.get(0);
+                reason = "cogiste " + event.get(0);
             } else if (event.getChangeReason().equals(ChangeReason.WOOL_PLACE)) {
-                reason = "placed " + event.get(0);
+                reason = "colocaste " + event.get(0);
             } else if (event.getChangeReason().equals(ChangeReason.CORE_LEAK)) {
-                reason = "you broke a piece of " + event.get(0);
+                reason = "rompiste un trozo del " + event.get(0);
             } else if (event.getChangeReason().equals(ChangeReason.MONUMENT_DESTROY)) {
-                reason = "you destroyed " + event.get(0) + "% of " + event.get(1);
+                reason = "destruiste " + event.get(0) + "% del " + event.get(1);
             } else if (event.getChangeReason().equals(ChangeReason.TEAM_WIN)) {
-                reason = "your team (" + event.get(0) + ChatColor.GRAY + ") won";
+                reason = "tu equipo (" + event.get(0) + ChatColor.GRAY + ") ha ganado";
             } else if (event.getChangeReason().equals(ChangeReason.TEAM_LOYAL)) {
-                reason = "you were loyal to your team (" + event.get(0) + ChatColor.GRAY + ")";
+                reason = "has sido leal a tu equipo (" + event.get(0) + ChatColor.GRAY + ")";
             } else if (event.getChangeReason().equals(ChangeReason.DESTROY_WOOL)) {
-                reason = "you destroyed " + event.get(0);
+                reason = "destruiste " + event.get(0);
             } else {
-                reason = "unknown reason";
+                reason = "sin razon";
             }
-            event.getPlayer().sendMessage(new UnlocalizedChatMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "+" + event.getFinalAmount() + ChatColor.WHITE + " Snowflakes" + ChatColor.DARK_PURPLE + " | " + ChatColor.GOLD + "" + ChatColor.ITALIC + event.getMultiplier() + "x" + ChatColor.DARK_PURPLE + " | " + ChatColor.GRAY + reason).getMessage(event.getPlayer().getLocale()));
+            event.getPlayer().sendMessage(new UnlocalizedChatMessage(ChatColor.GREEN + "" + ChatColor.BOLD + "+" + event.getFinalAmount() + ChatColor.WHITE + " Coins" + ChatColor.DARK_PURPLE + " | " + ChatColor.GOLD + "" + ChatColor.ITALIC + event.getMultiplier() + "x" + ChatColor.DARK_PURPLE + " | " + ChatColor.GRAY + reason).getMessage(event.getPlayer().getLocale()));
             event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.LEVEL_UP, 1, 1.5F);
-            if (Cardinal.getCardinalDatabase().get(event.getPlayer(), "snowflakes").equals("")) {
-                Cardinal.getCardinalDatabase().put(event.getPlayer(), "snowflakes", event.getFinalAmount() + "");
+            if (Cardinal.getCardinalDatabase().get(event.getPlayer(), "coins").equals("")) {
+                Cardinal.getCardinalDatabase().put(event.getPlayer(), "coins", event.getFinalAmount() + "");
             } else {
-                Cardinal.getCardinalDatabase().put(event.getPlayer(), "snowflakes", (NumUtils.parseInt(Cardinal.getCardinalDatabase().get(event.getPlayer(), "snowflakes")) + event.getFinalAmount()) + "");
+                Cardinal.getCardinalDatabase().put(event.getPlayer(), "coins", (NumUtils.parseInt(Cardinal.getCardinalDatabase().get(event.getPlayer(), "coins")) + event.getFinalAmount()) + "");
             }
         }
     }
