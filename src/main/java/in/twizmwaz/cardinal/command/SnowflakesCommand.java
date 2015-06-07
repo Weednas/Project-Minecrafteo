@@ -11,13 +11,13 @@ import org.bukkit.command.CommandSender;
 
 public class SnowflakesCommand {
 
-    @Command(aliases = {"snowflakes", "sf"}, desc = "View your own or another player's snowflake count.", usage = "[player]")
+    @Command(aliases = {"coins", "puntos"}, desc = "View your own or another player's coins count.", usage = "[player]")
     public static void settings(final CommandContext cmd, CommandSender sender) throws CommandException {
         if (cmd.argsLength() == 0) {
-            Bukkit.dispatchCommand(sender, "snowflakes " + sender.getName());
+            Bukkit.dispatchCommand(sender, "coins " + sender.getName());
         } else {
             String name = Bukkit.getOfflinePlayer(cmd.getString(0)).getName();
-            sender.sendMessage(ChatColor.DARK_PURPLE + (sender.getName().equals(name) ? "Tienes " : TeamUtils.getTeamColorByPlayer(Bukkit.getOfflinePlayer(name)) + name + ChatColor.DARK_PURPLE + " has ") + ChatColor.GOLD + (Cardinal.getCardinalDatabase().get(Bukkit.getOfflinePlayer(cmd.getString(0)), "snowflakes").equals("") ? "0" : Cardinal.getCardinalDatabase().get(Bukkit.getOfflinePlayer(cmd.getString(0)), "snowflakes")) + " snowflake" + (Cardinal.getCardinalDatabase().get(Bukkit.getOfflinePlayer(cmd.getString(0)), "snowflakes").equals("1") ? "" : "s"));
+            sender.sendMessage(ChatColor.DARK_PURPLE + (sender.getName().equals(name) ? "Tienes " : TeamUtils.getTeamColorByPlayer(Bukkit.getOfflinePlayer(name)) + name + ChatColor.DARK_PURPLE + " has ") + ChatColor.GOLD + (Cardinal.getCardinalDatabase().get(Bukkit.getOfflinePlayer(cmd.getString(0)), "coins").equals("") ? "0" : Cardinal.getCardinalDatabase().get(Bukkit.getOfflinePlayer(cmd.getString(0)), "coins")) + " coins" + (Cardinal.getCardinalDatabase().get(Bukkit.getOfflinePlayer(cmd.getString(0)), "coins").equals("1") ? "" : "s"));
         }
     }
 
