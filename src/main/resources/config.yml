@@ -1,11 +1,11 @@
-repo: mapas
-rotation: rotacion.txt
+repo: maps
+rotation: rotation.txt
 deleteMatches: true
 displayMapLoadErrors: false
 custom-motd: true
 worldEditPermissions: true
-server-message: Minecrafteo Network
-cycle: 30
+server-message: Scrimmage Server
+cycle: -1
 matchTimeMillis: true
 observers-ready: true
 html:

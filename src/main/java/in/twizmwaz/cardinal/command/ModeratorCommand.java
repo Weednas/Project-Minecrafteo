@@ -28,22 +28,22 @@ public class ModeratorCommand {
                     players.add(moderator.getUniqueId().toString());
                     GameHandler.getGameHandler().getPlugin().getConfig().set("permissions.Moderator.players", players);
                     GameHandler.getGameHandler().getPlugin().saveConfig();
-                    sender.sendMessage(ChatColor.GREEN + "Usted le dio permiso de moderador a " + TeamUtils.getTeamColorByPlayer(moderator) + (moderator.isOnline() ? ((Player) moderator).getDisplayName() : moderator.getName()));
+                    sender.sendMessage(ChatColor.GREEN + "You gave moderator permissions to " + TeamUtils.getTeamColorByPlayer(moderator) + (moderator.isOnline() ? ((Player) moderator).getDisplayName() : moderator.getName()));
                     if (moderator.isOnline()) {
-                        ((Player) moderator).sendMessage(ChatColor.GREEN + "Ahora eres un moderador!");
+                        ((Player) moderator).sendMessage(ChatColor.GREEN + "You are now a moderator!");
                         for (String permission : GameHandler.getGameHandler().getPlugin().getConfig().getStringList("permissions.Moderator.permissions")) {
                             GameHandler.getGameHandler().getMatch().getModules().getModules(PermissionModule.class).get(0).enablePermission((Player) moderator, permission);
                         }
                         Bukkit.getServer().getPluginManager().callEvent(new RankChangeEvent((Player) moderator));
                     }
                 } else {
-                    throw new CommandException("El jugador especificado ya es un moderador!");
+                    throw new CommandException("The player specified is already a moderator!");
                 }
             } else {
-                throw new CommandException("El jugador especificado ya es op!");
+                throw new CommandException("The player specified is already op!");
             }
         } else {
-            throw new CommandException("Jugador desconocido!");
+            throw new CommandException("Unknown player specified!");
         }
     }
 
@@ -57,22 +57,22 @@ public class ModeratorCommand {
                     List<String> players = GameHandler.getGameHandler().getPlugin().getConfig().getStringList("permissions.Moderator.players");
                     players.remove(moderator.getUniqueId().toString());
                     GameHandler.getGameHandler().getPlugin().getConfig().set("permissions.Moderator.players", players);
-                    sender.sendMessage(ChatColor.RED + "Has retirado los permisos de moderador de " + TeamUtils.getTeamColorByPlayer(moderator) + (moderator.isOnline() ? ((Player) moderator).getDisplayName() : moderator.getName()));
+                    sender.sendMessage(ChatColor.RED + "You removed moderator permissions from " + TeamUtils.getTeamColorByPlayer(moderator) + (moderator.isOnline() ? ((Player) moderator).getDisplayName() : moderator.getName()));
                     if (moderator.isOnline()) {
-                        ((Player) moderator).sendMessage(ChatColor.RED + "Usted ya no es un moderador!");
+                        ((Player) moderator).sendMessage(ChatColor.RED + "You are no longer a moderator!");
                         for (String permission : GameHandler.getGameHandler().getPlugin().getConfig().getStringList("permissions.Moderator.permissions")) {
                             GameHandler.getGameHandler().getMatch().getModules().getModules(PermissionModule.class).get(0).disablePermission((Player) moderator, permission);
                         }
                         Bukkit.getServer().getPluginManager().callEvent(new RankChangeEvent((Player) moderator));
                     }
                 } else {
-                    throw new CommandException("El jugador especificado no es un moderador!");
+                    throw new CommandException("The player specified is not a moderator!");
                 }
             } else {
-                throw new CommandException("El jugador especificado ya es op!");
+                throw new CommandException("The player specified is already op!");
             }
         } else {
-            throw new CommandException("Jugador desconocido!");
+            throw new CommandException("Unknown player specified!");
         }
     }
 }

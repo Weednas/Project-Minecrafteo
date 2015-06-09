@@ -10,17 +10,12 @@ import org.bukkit.event.HandlerList;
 
 public class BroadcastModule implements TaskedModule {
 
-    public enum BroadcastType {
-        TIP(), ALERT();
-    }
-
     private final String message;
     private final BroadcastType type;
     private final int timeAfter;
     private final int every;
     private final int count;
     private int timesBroadcasted;
-
     protected BroadcastModule(final String message, final BroadcastType type, final int timeAfter, final int every, final int count) {
         this.message = message;
         this.type = type;
@@ -44,11 +39,15 @@ public class BroadcastModule implements TaskedModule {
                     if (type.equals(BroadcastType.TIP))
                         ChatUtils.getGlobalChannel().sendLocalizedMessage(new UnlocalizedChatMessage(ChatColor.GRAY + "" + ChatColor.BOLD + "[" + ChatColor.BLUE + "" + ChatColor.BOLD + "Tip" + ChatColor.GRAY + "" + ChatColor.BOLD + "] " + ChatColor.AQUA + "" + ChatColor.ITALIC + message));
                     else if (type.equals(BroadcastType.ALERT))
-                        ChatUtils.getGlobalChannel().sendLocalizedMessage(new UnlocalizedChatMessage(ChatColor.GRAY + "" + ChatColor.BOLD + "[" + ChatColor.YELLOW + "" + ChatColor.BOLD + "Alerta" + ChatColor.GRAY + "" + ChatColor.BOLD + "] " + ChatColor.GREEN + "" + ChatColor.ITALIC + message));
+                        ChatUtils.getGlobalChannel().sendLocalizedMessage(new UnlocalizedChatMessage(ChatColor.GRAY + "" + ChatColor.BOLD + "[" + ChatColor.YELLOW + "" + ChatColor.BOLD + "Alert" + ChatColor.GRAY + "" + ChatColor.BOLD + "] " + ChatColor.GREEN + "" + ChatColor.ITALIC + message));
                     timesBroadcasted++;
                 }
             }
         }
+    }
+
+    public enum BroadcastType {
+        TIP(), ALERT();
     }
 
 

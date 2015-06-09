@@ -42,7 +42,7 @@ public class Rotation {
         try {
             refreshRepo();
         } catch (IOException e) {
-            throw new RotationLoadException("No se pudo acceder al repositorio. Asegurese de que java tiene privilegios de lectura y escritura suficiente.");
+            throw new RotationLoadException("Could not access the repository. Make sure java has sufficient read and write privileges.");
         }
         refreshRotation();
     }
@@ -92,9 +92,9 @@ public class Rotation {
                         }
                         loaded.add(new LoadedMap(name, version, objective, authors, contributors, rules, maxPlayers, map));
                     } catch (Exception e) {
-                        Bukkit.getLogger().log(Level.WARNING, "Error al cargar el mapa en " + map.getAbsolutePath());
+                        Bukkit.getLogger().log(Level.WARNING, "Failed to load map at " + map.getAbsolutePath());
                         if (Cardinal.getInstance().getConfig().getBoolean("displayMapLoadErrors")) {
-                            Bukkit.getLogger().log(Level.INFO, "Mostrando de error, esto se puede desactivar en la configuracion: ");
+                            Bukkit.getLogger().log(Level.INFO, "Showing error, this can be disabled in the config: ");
                             e.printStackTrace();
                         }
                     }
@@ -107,7 +107,7 @@ public class Rotation {
             e.printStackTrace();
         }
         if (loaded.size() < 1)
-            throw new RotationLoadException("No se cargaron mapas. ¿Hay mapas en el repositorio ?");
+            throw new RotationLoadException("No maps were loaded. Are there any maps in the repository?");
     }
 
     /**
@@ -131,7 +131,7 @@ public class Rotation {
                     } catch (IndexOutOfBoundsException ex) {
                     }
                 }
-                Bukkit.getLogger().log(Level.WARNING, "Error al cargar el archivo de rotacion, utilizando una rotacion temporal en lugar.");
+                Bukkit.getLogger().log(Level.WARNING, "Failed to load rotation file, using a temporary rotation instead.");
             } else {
                 for (String line : lines) {
                     for (LoadedMap map : loaded) {
@@ -149,7 +149,7 @@ public class Rotation {
                 } catch (IndexOutOfBoundsException ex) {
                 }
             }
-            Bukkit.getLogger().log(Level.WARNING, "Error al cargar el archivo de rotacion, utilizando una rotacion temporal en lugar.");
+            Bukkit.getLogger().log(Level.WARNING, "Failed to load rotation file, using a temporary rotation instead.");
         }
         position = 0;
     }

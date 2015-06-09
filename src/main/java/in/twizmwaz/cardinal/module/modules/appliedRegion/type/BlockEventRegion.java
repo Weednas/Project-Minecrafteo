@@ -10,7 +10,18 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.ItemFrame;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.*;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockBurnEvent;
+import org.bukkit.event.block.BlockFadeEvent;
+import org.bukkit.event.block.BlockFormEvent;
+import org.bukkit.event.block.BlockFromToEvent;
+import org.bukkit.event.block.BlockGrowEvent;
+import org.bukkit.event.block.BlockIgniteEvent;
+import org.bukkit.event.block.BlockPhysicsEvent;
+import org.bukkit.event.block.BlockPistonExtendEvent;
+import org.bukkit.event.block.BlockPistonRetractEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.block.BlockSpreadEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.hanging.HangingBreakEvent;
@@ -62,6 +73,7 @@ public class BlockEventRegion extends AppliedRegion {
         }
     }
 
+    @EventHandler
     public void onBucketFill(PlayerBucketFillEvent event) {
         if (!event.isCancelled() && filter.evaluate(event.getPlayer(), event.getBlockClicked().getRelative(event.getBlockFace()), event).equals(FilterState.DENY)
                 && region.contains(new BlockRegion(null, event.getBlockClicked().getRelative(event.getBlockFace()).getLocation().toVector()))) {
@@ -195,7 +207,7 @@ public class BlockEventRegion extends AppliedRegion {
 
     @EventHandler
     public void onBlockPhysics(BlockPhysicsEvent event) {
-        if (filter.evaluate(event.getBlock(), event).equals(FilterState.DENY) && region.contains(new BlockRegion(null, event.getBlock().getLocation().toVector()))) {
+        if (region.contains(new BlockRegion(null, event.getBlock().getLocation().toVector())) && filter.evaluate(event.getBlock(), event).equals(FilterState.DENY)) {
             event.setCancelled(true);
         }
     }

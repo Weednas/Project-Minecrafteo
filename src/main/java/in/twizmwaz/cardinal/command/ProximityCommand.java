@@ -19,7 +19,7 @@ import org.bukkit.entity.Player;
 
 public class ProximityCommand {
 
-    @Command(aliases = {"proximity", "distancia", "proximidad"}, desc = "Shows the proximity of the objectives in the match.")
+    @Command(aliases = {"proximity"}, desc = "Shows the proximity of the objectives in the match.")
     public static void proximity(final CommandContext cmd, CommandSender sender) throws CommandException {
         if (!(sender instanceof Player) || TeamUtils.getTeamByPlayer((Player) sender) != null || TeamUtils.getTeamByPlayer((Player) sender).isObserver() || !GameHandler.getGameHandler().getMatch().isRunning() || sender.hasPermission("cardinal.proximity")) {
             for (TeamModule team : TeamUtils.getTeams()) {
@@ -29,26 +29,26 @@ public class ProximityCommand {
                         if (objective.isComplete()) {
                             if (objective instanceof WoolObjective) {
                                 WoolObjective wool = (WoolObjective) objective;
-                                sender.sendMessage("  " + MiscUtils.convertDyeColorToChatColor(wool.getColor()) + WordUtils.capitalizeFully(objective.getName().replaceAll("_", " ")) + "  " + ChatColor.GREEN + "COMPLETADO");
+                                sender.sendMessage("  " + MiscUtils.convertDyeColorToChatColor(wool.getColor()) + WordUtils.capitalizeFully(objective.getName().replaceAll("_", " ")) + "  " + ChatColor.GREEN + "COMPLETE");
                             } else {
-                                sender.sendMessage("  " + WordUtils.capitalizeFully(objective.getName().replaceAll("_", " ")) + "  " + ChatColor.GREEN + "COMPLETADO");
+                                sender.sendMessage("  " + WordUtils.capitalizeFully(objective.getName().replaceAll("_", " ")) + "  " + ChatColor.GREEN + "COMPLETE");
                             }
                         } else if (objective.isTouched()) {
                             if (objective instanceof WoolObjective) {
                                 WoolObjective wool = (WoolObjective) objective;
                                 double proximity = ((WoolObjective) objective).getProximity();
-                                sender.sendMessage("  " + MiscUtils.convertDyeColorToChatColor(wool.getColor()) + WordUtils.capitalizeFully(objective.getName().replaceAll("_", " ")) + "  " + ChatColor.YELLOW + "TOCADO" + ChatColor.GRAY + "  closest safety: " + ChatColor.AQUA + (proximity == Double.POSITIVE_INFINITY ? "Infinity" : (Math.round(proximity * 100.0) / 100.0)));
+                                sender.sendMessage("  " + MiscUtils.convertDyeColorToChatColor(wool.getColor()) + WordUtils.capitalizeFully(objective.getName().replaceAll("_", " ")) + "  " + ChatColor.YELLOW + "TOUCHED" + ChatColor.GRAY + "  closest safety: " + ChatColor.AQUA + (proximity == Double.POSITIVE_INFINITY ? "Infinity" : (Math.round(proximity * 100.0) / 100.0)));
                             } else {
-                                sender.sendMessage("  " + WordUtils.capitalizeFully(objective.getName().replaceAll("_", " ")) + "  " + ChatColor.YELLOW + "TOCADO");
+                                sender.sendMessage("  " + WordUtils.capitalizeFully(objective.getName().replaceAll("_", " ")) + "  " + ChatColor.YELLOW + "TOUCHED");
                             }
                         } else {
                             if (objective instanceof WoolObjective) {
                                 WoolObjective wool = (WoolObjective) objective;
                                 double proximity = ((WoolObjective) objective).getProximity();
-                                sender.sendMessage("  " + MiscUtils.convertDyeColorToChatColor(wool.getColor()) + WordUtils.capitalizeFully(objective.getName().replaceAll("_", " ")) + "  " + ChatColor.RED + "SIN TOCAR" + ChatColor.GRAY + "  closest kill: " + ChatColor.AQUA + (proximity == Double.POSITIVE_INFINITY ? "Infinity" : (Math.round(proximity * 100.0) / 100.0)));
+                                sender.sendMessage("  " + MiscUtils.convertDyeColorToChatColor(wool.getColor()) + WordUtils.capitalizeFully(objective.getName().replaceAll("_", " ")) + "  " + ChatColor.RED + "UNTOUCHED" + ChatColor.GRAY + "  closest kill: " + ChatColor.AQUA + (proximity == Double.POSITIVE_INFINITY ? "Infinity" : (Math.round(proximity * 100.0) / 100.0)));
                             } else {
                                 double proximity = objective instanceof DestroyableObjective ? ((DestroyableObjective) objective).getProximity() : objective instanceof CoreObjective ? ((CoreObjective) objective).getProximity() : 0.0;
-                                sender.sendMessage("  " + WordUtils.capitalizeFully(objective.getName().replaceAll("_", " ")) + "  " + ChatColor.RED + "SIN TOCAR" + ChatColor.GRAY + "  closest player: " + ChatColor.AQUA + (proximity == Double.POSITIVE_INFINITY ? "Infinity" : (Math.round(proximity * 100.0) / 100.0)));
+                                sender.sendMessage("  " + WordUtils.capitalizeFully(objective.getName().replaceAll("_", " ")) + "  " + ChatColor.RED + "UNTOUCHED" + ChatColor.GRAY + "  closest player: " + ChatColor.AQUA + (proximity == Double.POSITIVE_INFINITY ? "Infinity" : (Math.round(proximity * 100.0) / 100.0)));
                             }
                         }
                     }

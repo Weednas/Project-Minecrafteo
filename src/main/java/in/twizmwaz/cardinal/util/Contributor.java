@@ -32,7 +32,7 @@ public class Contributor {
     }
 
     public void setName(String name) {
-        if (this.name != null) throw new UnsupportedOperationException("Nombre del contribuidor ya esta establecido");
+        if (this.name != null) throw new UnsupportedOperationException("Contributor name is already set");
         this.name = name;
     }
 

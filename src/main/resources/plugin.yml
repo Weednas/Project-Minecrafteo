@@ -2,5 +2,5 @@ name: ${plugin.name}
 description: ${project.description}
 main: ${plugin.mainClass}
 version: ${project.version}-${describe}
-authors: [DaniOurGamer]
-prefix: Project Minecrafteo
+authors: [twiz_mwazin]
+prefix: CardinalPGM
