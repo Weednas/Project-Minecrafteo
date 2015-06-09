@@ -10,21 +10,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class LocaleHandler {
-    
+
     private final Set<Document> documents;
-    
+
     public LocaleHandler(Plugin plugin) throws JDOMException, IOException {
         this.documents = new HashSet<>();
         SAXBuilder saxBuilder = new SAXBuilder();
-        documents.add(saxBuilder.build(plugin.getResource("lang/es.xml")));
         documents.add(saxBuilder.build(plugin.getResource("lang/en.xml")));
+        documents.add(saxBuilder.build(plugin.getResource("lang/es.xml")));
     }
-    
+
     public Document getLocaleDocument(String locale) {
         for (Document document : documents) {
             if (locale.equals(document.getRootElement().getAttributeValue("lang"))) return document;
         }
         return getLocaleDocument("es");
     }
-    
+
 }
