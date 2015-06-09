@@ -31,6 +31,7 @@ public class Cardinal extends JavaPlugin {
     private static GameHandler gameHandler;
     private static LocaleHandler localeHandler;
     private CommandsManager<CommandSender> commands;
+    private File databaseFile;
     private static Database database;
 
     @Override
@@ -104,7 +105,7 @@ public class Cardinal extends JavaPlugin {
             this.setEnabled(false);
             return;
         }
-        File databaseFile = new File(getDataFolder(), "database.xml");
+        databaseFile = new File(getDataFolder(), "database.xml");
         if (databaseFile.exists()) {
             try {
                 database = Database.loadFromFile(databaseFile);
@@ -162,6 +163,7 @@ public class Cardinal extends JavaPlugin {
     
     @Override
     public void onDisable() {
+        database.save(databaseFile);
     }
 
     public GameHandler getGameHandler() {
