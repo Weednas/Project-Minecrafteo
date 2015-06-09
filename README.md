@@ -1,4 +1,4 @@
-Project Minecrafteo [![Build Status]
+Project Minecrafteo
 ===========
 
 Esta es la nueva versión 2.0 para el servidor de Project Minecrafteo en Minecrafteo Network. Esta versión solo será compatible con la 1.8 de Minecraft
